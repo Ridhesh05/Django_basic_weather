@@ -2,7 +2,7 @@
 Built a weather app using Django and OpenWeatherMap API used to access the live weather details.
 
 
-#SCREENSHOTS
+# 𝐒𝐂𝐑𝐄𝐄𝐍𝐒𝐇𝐎𝐓𝐒
 
 
 ![image](https://github.com/Ridhesh05/Django_basic_weather/assets/123955317/7948ad1c-a9f0-4530-b31b-4ba784df0c83)
