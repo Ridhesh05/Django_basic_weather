@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Weather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding-top: 20px;
+    }
+
+    nav {
+      background: #333;
+      color: white;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .weather-card {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .weather-icon {
+      width: 70px;
+    }
+
+    .search-button {
+      margin-bottom: 10px;
+    }
+    .form-control::placeholder {
+      font-size: 15px; /* Adjust the font size as needed */
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Weather</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" class="form-control" name="city" placeholder="Enter city name">
+          </div>
+          <button type="submit" class="btn btn-primary search-button">Search</button>
+        </form>
+      </div>
+    </div>
+
+    {% if country_code and cor and temp and pressure and humidity %}
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 weather-card">
+        <h1>{{ city }}</h1>
+        <p>Country Code: {{ country_code }}</p>
+        <p>Coordinates: {{ cor }}</p>
+        <p>Temperature: {{ temp }}°C</p>
+        <p>Pressure: {{ pressure }} hPa</p>
+        <p>Humidity: {{ humidity }}%</p>
+        <p>Main: {{ main }}</p>
+        <p>Description: {{ description }}</p>
+        <img class="weather-icon" src="http://openweathermap.org/img/w/{{ icon }}.png" alt="Weather Icon">
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+</body>
+
+</html>
